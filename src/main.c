@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 14:04:46 by iokuno            #+#    #+#             */
-/*   Updated: 2025/10/31 14:35:13 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/11/04 11:56:09 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <string.h>
 #include <sys/time.h>
 #include <unistd.h>
+
+ t_ctx
+{
+}
 
 int	usage_mes(void)
 {
@@ -30,8 +34,11 @@ int	usage_mes(void)
 
 int	main(int ac, char **av)
 {
+	t_ctx	ctx;
+
+	ctx = NULL;
 	if (ac != 5 && ac != 6)
 		return (usage_mes());
-	
+	init_ctx();
 	return (EXIT_SUCCESS);
 }
