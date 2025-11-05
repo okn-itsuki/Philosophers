@@ -1,25 +1,43 @@
-NAME		= philo
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
+NAME = philosophers
 
-SRCS		= src/main.c
-OBJS		= $(SRCS:.c=.o)
-INCS		= -I include
+CC = cc
+CFLAGS = -Wall -Wextra -Werror \
+		-I inc 
 
-all: $(NAME)
+RM = rm -fr
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -lpthread -o $(NAME)
+SRCDIR = src
+OBJDIR = obj
+SRCFILE = main.C
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+SRCS = $(addprefix $(SRCDIR)/, $(SRCFILE))
+OBJS = $(addprefix $(OBJDIR)/, $(SRCFILE:.c=.o))
+
+LIBFT_DIR = libft
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
+all: $(LIBFT_LIB) $(NAME)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT_LIB):
+	$(MAKE) -C $(LIBFT_DIR)
+
+
+$(NAME): $(LIBFT_LIB) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT_LIB) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJDIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

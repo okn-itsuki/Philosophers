@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: okunoitsuki <okunoitsuki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 14:04:46 by iokuno            #+#    #+#             */
-/*   Updated: 2025/11/04 11:56:09 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:56:06 by okunoitsuki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include "philo.h"
 
- t_ctx
-{
-}
-
-int	usage_mes(void)
+int usage_mes(void)
 {
 	printf("usage : This program must take the following arguments:\n");
 	printf("\tnumber_of_philosophers\n");
@@ -32,13 +23,18 @@ int	usage_mes(void)
 	return (EXIT_FAILURE);
 }
 
-int	main(int ac, char **av)
+void init_ctx(t_philo *philo, char **av, int ac)
 {
-	t_ctx	ctx;
+	philo->av = av;
+	philo->ac = ac;
+}
 
-	ctx = NULL;
+int main(int ac, char **av)
+{
+	t_philo philo;
+
 	if (ac != 5 && ac != 6)
 		return (usage_mes());
-	init_ctx();
+	init_ctx(&philo, av, ac);
 	return (EXIT_SUCCESS);
 }
