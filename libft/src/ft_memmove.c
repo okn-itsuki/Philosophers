@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/26 23:02:53 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/11 10:16:09 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	char		*d;
+	char const	*s;
+	int			direction;
 
-int			usage_mes(void);
-
-#endif
+	d = (char *)dest;
+	s = (const char *)src;
+	if (d == s)
+		return (dest);
+	direction = 1;
+	if (d > s)
+	{
+		direction = -1;
+		d += n - 1;
+		s += n - 1;
+	}
+	while (n > 0)
+	{
+		*(unsigned char *)d = *(unsigned char *)s;
+		d += direction;
+		s += direction;
+		n--;
+	}
+	return (dest);
+}

@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/25 10:42:56 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/11 21:54:44 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+int	ft_isalnum(int c)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
-
-int			usage_mes(void);
-
-#endif
+	return (ft_isalpha(c) || ft_isdigit(c));
+}

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/05/01 03:16:46 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/11 21:54:16 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	char	*mem;
+	size_t	i;
 
-int			usage_mes(void);
-
-#endif
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	mem = ft_strdup(s);
+	if (mem)
+	{
+		while (mem[i])
+		{
+			mem[i] = f(i, mem[i]);
+			i++;
+		}
+	}
+	return (mem);
+}

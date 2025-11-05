@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/25 05:43:14 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/09 17:21:25 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
-
-int			usage_mes(void);
-
-#endif
+	write(fd, s, ft_strlen(s));
+}

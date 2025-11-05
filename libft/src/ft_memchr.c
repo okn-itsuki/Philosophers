@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/27 20:18:50 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/09 17:21:00 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t		i;
+	char const	*str;
+	char		chr;
 
-int			usage_mes(void);
-
-#endif
+	i = 0;
+	chr = (char)c;
+	str = (char const *)s;
+	while (i < n)
+	{
+		if (str[i] == chr)
+			return ((void *)&s[i]);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/28 06:09:12 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/08/04 04:18:17 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t				i;
+	unsigned const char	*c1;
+	unsigned const char	*c2;
 
-int			usage_mes(void);
-
-#endif
+	c1 = (const unsigned char *)s1;
+	c2 = (const unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (c1[i] != c2[i])
+			return (c1[i] - c2[i]);
+		i++;
+	}
+	return (0);
+}

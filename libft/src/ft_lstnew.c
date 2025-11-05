@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/05/02 23:59:45 by okunoitsuki       #+#    #+#             */
+/*   Updated: 2025/05/09 17:20:57 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+t_list	*ft_lstnew(void *content)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	t_list	*mem;
 
-int			usage_mes(void);
-
-#endif
+	mem = malloc(sizeof(t_list));
+	if (!mem)
+		return (NULL);
+	mem->content = content;
+	mem->next = NULL;
+	return (mem);
+}

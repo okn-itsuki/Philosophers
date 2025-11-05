@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/28 05:47:09 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/09 17:21:57 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+char	*ft_strrchr(const char *s, int c)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t			len;
+	unsigned char	*s_1;
+	char			c_1;
 
-int			usage_mes(void);
-
-#endif
+	s_1 = (unsigned char *)s;
+	c_1 = (char)c;
+	len = ft_strlen(s) + 1;
+	while (len--)
+	{
+		if (s_1[len] == c_1)
+			return ((char *)&s[len]);
+	}
+	return (NULL);
+}

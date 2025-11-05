@@ -1,14 +1,13 @@
 NAME = philosophers
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror \
-		-I inc 
+CFLAGS = -Wall -Wextra -Werror -I inc
 
 RM = rm -fr
 
 SRCDIR = src
 OBJDIR = obj
-SRCFILE = main.C
+SRCFILE = main.c usage_mes.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRCFILE))
 OBJS = $(addprefix $(OBJDIR)/, $(SRCFILE:.c=.o))

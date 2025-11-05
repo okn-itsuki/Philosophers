@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/28 18:16:29 by okunoitsuki       #+#    #+#             */
+/*   Updated: 2025/05/11 21:53:40 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	char	*mem;
+	size_t	total_len;
 
-int			usage_mes(void);
-
-#endif
+	if (!s1 || !s2)
+		return (ft_strdup(""));
+	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	mem = (char *)malloc(total_len * sizeof(char));
+	if (!mem)
+		return (NULL);
+	ft_strlcpy(mem, s1, total_len);
+	ft_strlcat(mem, s2, total_len);
+	return (mem);
+}

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/30 17:23:07 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/11 10:16:34 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	char	num;
+	long	nb;
 
-int			usage_mes(void);
-
-#endif
+	nb = (long)n;
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	num = (nb % 10) + '0';
+	write(fd, &num, 1);
+}

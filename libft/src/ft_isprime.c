@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_isprime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/07/19 02:32:28 by iokuno            #+#    #+#             */
+/*   Updated: 2025/07/19 04:40:09 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+int	ft_isprime(int n)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	int	p;
 
-int			usage_mes(void);
-
-#endif
+	p = 5;
+	if (n < 2)
+		return (0);
+	if (n == 2 || n == 3)
+		return (1);
+	if (n % 2 == 0 || n % 3 == 0)
+		return (0);
+	while (p * p <= n)
+	{
+		if ((n % p == 0) || (n % (p + 2) == 0))
+			return (0);
+		p += 6;
+	}
+	return (1);
+}

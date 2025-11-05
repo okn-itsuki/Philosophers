@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/07/19 02:26:30 by iokuno            #+#    #+#             */
+/*   Updated: 2025/07/19 02:28:06 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-int			usage_mes(void);
-
-#endif
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (!str1 || !str2)
+		return (1);
+	while (s2[i])
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		if (str1[i] == '\0' || str2[i] == '\0')
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}

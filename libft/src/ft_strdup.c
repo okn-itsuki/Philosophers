@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/25 01:42:03 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/11 10:17:07 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+char	*ft_strdup(const char *s)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t	len;
+	size_t	i;
+	char	*mem;
 
-int			usage_mes(void);
-
-#endif
+	len = ft_strlen(s);
+	i = 0;
+	mem = (char *)malloc(sizeof(char) * len + 1);
+	if (!mem)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		mem[i] = s[i];
+		i++;
+	}
+	mem[i] = '\0';
+	return (mem);
+}

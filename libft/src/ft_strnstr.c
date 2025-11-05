@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/05 18:52:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/04/28 06:32:13 by oitsuki           #+#    #+#             */
+/*   Updated: 2025/05/09 17:21:52 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "libft.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <unistd.h>
-
-typedef struct s_ctx
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	**av;
-	int		ac;
-}			t_ctx;
+	size_t	i;
+	size_t	j;
 
-int			usage_mes(void);
-
-#endif
+	i = 0;
+	if (!*little)
+		return ((char *)big);
+	while (i < len && big[i])
+	{
+		j = 0;
+		while (i + j < len && little[j] && big[i + j] == little[j])
+			j++;
+		if (little[j] == '\0')
+			return ((char *)&big[i]);
+		i++;
+	}
+	return (NULL);
+}
