@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:47:39 by okunoitsuki       #+#    #+#             */
-/*   Updated: 2025/11/06 10:30:44 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/11/06 16:44:54 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct s_ctx
 }					t_ctx;
 
 int					usage_mes(void);
-void				init_ctx(int ac, char **av, t_ctx *ctx);
+int				init_ctx(int ac, char **av, t_ctx *ctx);
 bool				is_valid_arg(int ac, char **av);
-
+int					ft_atoi_strict(const char *s);
+int					ft_atoi_err(int n);
 #endif
