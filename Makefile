@@ -2,6 +2,7 @@ NAME = philosophers
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I inc
+INCS        = -I inc -I libft/inc
 
 RM = rm -fr
 
@@ -21,7 +22,7 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(LIBFT_LIB):
 	$(MAKE) -C $(LIBFT_DIR)

@@ -1,3 +1,0 @@
-obj/ft_bzero.o: src/ft_bzero.c inc/libft.h
-
-inc/libft.h:

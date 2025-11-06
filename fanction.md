@@ -3,8 +3,11 @@ printf
 malloc
 free
 write
-usleep
-gettimeofday
+
+usleep -> プログラムをμs秒止める
+
+gettimeofday -> 
+
 pthread_create
 pthread_detach
 pthread_join

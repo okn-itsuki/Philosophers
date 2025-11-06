@@ -30,7 +30,7 @@
 
 プログラムの引数
 - あなたのプログラムは次の引数を取らなければならない
-```number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]```
+```number_of_philosophers time_to_die time_to_eat time_to_sleep [umber_of_times_each_philosopher_must_eat]```
 
 それぞれの意味は次のとおりである
 - number_of_philosophers
